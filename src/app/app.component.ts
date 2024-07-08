@@ -2,12 +2,30 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-user',
+  template: `
+    Username: {{ username }}
+  `,
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+})
+export class UserComponent {
+  username = 'youngTech';
+}
+
+@Component({
+  selector: 'app-root',
+  template: `
+    @if (isLoggedIn) {
+      <p>You are logged in!</p>
+    } @else {
+      <p>You are not logged in!</p>
+    }
+  
+  `,
+  standalone: true,
+  imports: [],
 })
 export class AppComponent {
-  title = 'Tutorial-v1';
+  isLoggedIn = false;
 }
+
