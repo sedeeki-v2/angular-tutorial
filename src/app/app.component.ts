@@ -14,11 +14,27 @@ export class UserComponent {
 
 @Component({
   selector: 'app-root',
-  template: `<div [contentEditable]="isEditable"></div>`,
+  template: `
+    <button (click)="greet()">
+      <section (mouseover)="onMouseOver()">
+        There's a secret message for you, hover to reveal 👀
+        {{ message }}
+      </section>
+    </button>
+  `,
   standalone: true,
   imports: [],
 })
 export class AppComponent {
-  isEditable = true;
+
+  message = "";
+
+  greet() {
+    console.log("Hi there, my name is Omar!");
+  }
+
+  onMouseOver() {
+    this.message = 'Way to go 🚀';
+  }
 }
 
