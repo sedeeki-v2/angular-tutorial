@@ -1,29 +1,20 @@
 import {Component} from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  standalone: true,
   selector: 'app-user',
   template: `
     <p>Username: {{ username }}</p>
-    <p>Preferred Framework:</p>
-    <ul>
-      <li>
-        Static Image:
-        <div class="image-container">
-          <img ngSrc="/assets/favicon.ico" height="60" width="80" priority alt="Angular logo" />
-        </div>
-      </li>
-      <li>
-        Dynamic Image:
-        <img [ngSrc]="logoUrl" height="60" width="80" [alt]="logoAlt" />
-      </li>
-    </ul>
+    <p>{{ username }}'s favorite framework: {{ favoriteFramework }}</p>
+    <label for="framework">
+      Favorite Framework:
+      <input id="framework" type="text" [(ngModel)]="favoriteFramework" />
+    </label>
   `,
-  imports: [NgOptimizedImage],
+  standalone: true,
+  imports: [FormsModule],
 })
 export class UserComponent {
-  logoUrl = '/assets/favicon.ico';
-  logoAlt = 'Angular logo';
   username = 'youngTech';
+  favoriteFramework = '';
 }
