@@ -1,14 +1,17 @@
 import {Component} from '@angular/core';
-import {CommentsComponent} from './comments.component';
-import { UserComponent } from './user.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   template: `
-    <app-user/>
+    <nav>
+      <a href="/">Home</a>
+      |
+      <a href="/user">User</a>
+    </nav>
+    <router-outlet />
   `,
   standalone: true,
-  imports: [CommentsComponent, UserComponent],
+  imports: [RouterOutlet],
 })
 export class AppComponent {}
-  
