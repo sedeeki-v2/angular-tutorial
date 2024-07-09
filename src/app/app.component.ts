@@ -1,15 +1,20 @@
-import {Component, inject} from '@angular/core';
-import {CarService} from './car.service';
+import {Component} from '@angular/core';
+import {DecimalPipe, DatePipe, CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  template: `<p>Car Listing: {{ display }}</p>`,
+  template: `
+    <ul>
+      <li>Number with "decimal" {{ num | number:'3.2-2' }}</li>
+      <li>Date with "date" {{ birthday | date:'medium' }}</li>
+      <li>Currency with "currency" {{ cost | currency }}</li>
+    </ul>
+  `,
   standalone: true,
+  imports: [DecimalPipe, DatePipe, CurrencyPipe],
 })
 export class AppComponent {
-  display = '';
-
-  constructor(private carService: CarService) {
-    this.display = this.carService.getCars().join(' ⭐️ ');
-  }
+  num = 103.1234;
+  birthday = new Date(2023, 3, 2);
+  cost = 4560.34;
 }
